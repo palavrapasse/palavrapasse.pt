@@ -11,7 +11,9 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			'@components': path.resolve('./src/lib/components/index.ts')
+			'@components': path.resolve('./src/lib/components/index.ts'),
+			'@http': path.resolve('./src/lib/http/index.ts'),
+			'@stores': path.resolve('./src/lib/stores/index.ts')
 		}
 	}
 };
