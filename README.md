@@ -10,6 +10,12 @@ Once you've created a project and installed dependencies with `npm install`, sta
 npm run dev
 ```
 
+Also, to update the localization files, you will need to run the following command before editing each locale files:
+
+```bash
+npm run typesafe-i18n
+```
+
 ## Building
 
 To create a production version of your app:
