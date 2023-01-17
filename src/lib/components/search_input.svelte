@@ -3,4 +3,10 @@
 	export let value: string;
 </script>
 
-<input type="search" name="search-input" id="search-input-{id}" bind:value />
+<input
+	class="input-ghost-primary input"
+	type="search"
+	name="search-input"
+	id="search-input-{id}"
+	bind:value
+/>
