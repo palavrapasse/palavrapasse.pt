@@ -1,5 +1,5 @@
 export enum Target {
-	all,
-	newest,
-	oldest
+	all = 'all',
+	newest = 'newest',
+	oldest = 'oldest,'
 }
