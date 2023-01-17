@@ -2,9 +2,12 @@
 	export let id: string;
 </script>
 
-<button id="notify-button-{id}" on:click>
-	<div style="display: flex; flex-direction: row;">
-		<div>Receber notificações</div>
-		<div>🔔</div>
+<button class="btn" id="notify-button-{id}" on:click>
+	<div class="flex flex-row items-center">
+		<div class="flex-column">
+			<div>Receber</div>
+			<div>notificações</div>
+		</div>
+		<div class="flex-row grow w-12">🔔</div>
 	</div>
 </button>
