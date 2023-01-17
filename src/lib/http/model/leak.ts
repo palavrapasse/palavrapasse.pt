@@ -1,4 +1,5 @@
 export type Leak = {
+	email: string;
 	context: string;
 	shareDateMSEpoch: number;
 };
