@@ -1,6 +1,4 @@
-import SantosClient from '$lib/http/client/santos';
-import SantosQueryImpl from '$lib/http/query/santos';
-import { Target, type QueryLeaks } from '@http';
+import { Target, type QueryLeaks, SantosClient, SantosQueryImpl } from '@http';
 import { writable } from 'svelte/store';
 
 export const QueryLeaksStore = createQueryStore();
@@ -13,6 +11,7 @@ function createQueryStore() {
 	return {
 		subscribe,
 		all: () => santosQuery.leaks(Target.all).then(set),
+		affected: (affected: string[]) => santosQuery.leaks(Target.all, affected).then(set),
 		reset: () => set(<QueryLeaks>{})
 	};
 }
