@@ -4,7 +4,7 @@ const baseUrl = new URL('http://localhost:8080');
 
 export const leaksEndpoint = 'leaks';
 
-export default class SantosClient extends FetchClient {
+export class SantosClient extends FetchClient {
 	constructor() {
 		super(baseUrl);
 	}
