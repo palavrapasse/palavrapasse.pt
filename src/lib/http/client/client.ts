@@ -25,7 +25,7 @@ export class FetchClient implements Client {
 	}
 
 	private resolveUrl(baseUrl: URL, endpoint: string, query?: QueryParameters): string {
-		let url = `${baseUrl}${endpoint}`.replaceAll(/\/{2,}/g, '/');
+		let url = `${baseUrl}/${endpoint}`.replaceAll(/(?<!:)\/{2,}/g, '/');
 
 		if (query) {
 			url = `${url}?${new URLSearchParams(query)}`;
@@ -35,7 +35,7 @@ export class FetchClient implements Client {
 	}
 }
 
-export type QueryParameters = Record<string, string>;
+export type QueryParameters = Record<string, any>;
 
 type Request = {
 	url: string;
