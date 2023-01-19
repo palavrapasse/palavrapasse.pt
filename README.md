@@ -2,6 +2,14 @@
 
 The web frontend that users use to query leaks information.
 
+## Hooks
+
+This repository is configured with client-side Git hooks which you need to install by running the following command:
+
+```bash
+./hooks/INSTALL
+```
+
 ## Development
 
 Once you've created a project and installed dependencies with `npm install`, start a development server:
