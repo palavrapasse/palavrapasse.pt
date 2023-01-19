@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { QueryLeaks } from '@http';
+	import { LL } from '@i18n';
 
 	export let id: string;
 	export let leaks: QueryLeaks;
@@ -9,8 +10,8 @@
 	<table id="leaks-query-table-{id}" class="table">
 		<thead>
 			<tr>
-				<th>Contexto</th>
-				<th>Data do Leak</th>
+				<th>{$LL.leakContext()}</th>
+				<th>{$LL.leakShareDate()}</th>
 			</tr>
 		</thead>
 		<tbody>
