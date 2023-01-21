@@ -15,7 +15,7 @@ function createQueryStore() {
 		subscribe,
 		all: () => onAllEvent(store, santosQuery),
 		affected: (affected: string[]) => onAffectedEvent(store, santosQuery, affected),
-		reset: () => onResetEvent(store, santosQuery)
+		reset: () => onResetEvent(store)
 	};
 }
 
@@ -29,6 +29,6 @@ function onAffectedEvent(store: Store<QueryLeaks>, query: Query, affected: strin
 	);
 }
 
-function onResetEvent(store: Store<QueryLeaks>, query: Query): void {
+function onResetEvent(store: Store<QueryLeaks>): void {
 	return setInitial(store, <QueryLeaks>{});
 }

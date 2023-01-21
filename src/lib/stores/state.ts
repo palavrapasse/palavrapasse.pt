@@ -1,5 +1,3 @@
-import type { Store } from './store';
-
 export type TypedState<T> = {
 	state: State;
 } & TypedStateValue<T> &
