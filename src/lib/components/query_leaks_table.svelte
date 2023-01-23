@@ -14,7 +14,7 @@
 				<th>{$LL.leakContext()}</th>
 				<th>{$LL.leakShareDate()}</th>
 				{#if includeEmail}
-					<th>${$LL.leakEmail()}</th>
+					<th>{$LL.leakEmail()}</th>
 				{/if}
 			</tr>
 		</thead>
