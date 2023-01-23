@@ -10,7 +10,7 @@ const en: Translation = {
 		'Do you want to receive e-mail notifications if your credentials get leaked?',
 	leakContext: 'Context',
 	leakShareDate: 'Leak Date',
-	leaksQueryNotFoundResponse: "Can' find leaked records for: {email}",
+	leaksQueryNotFoundResponse: "I don't find leaked records!",
 	yes: 'Yes',
 	no: 'No'
 };
