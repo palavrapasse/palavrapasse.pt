@@ -10,6 +10,7 @@
 		Badge
 	} from '@components';
 	import { QueryLeaksStore, State } from '@stores';
+	import Dropdown from '$lib/components/dropdown.svelte';
 
 	let value = '';
 	let affected: string[] = [];
@@ -53,6 +54,7 @@
 
 	<!-- preventDefault prevents input being included in webpage url -->
 	<form class="h-14 w-full text-center" on:submit|preventDefault={searchAffected}>
+		<Dropdown id="abc" label="yes" onValueChange={() => ''} values={['1', '2', '3']} />
 		<SearchInput id="affected-email" bind:value />
 	</form>
 
