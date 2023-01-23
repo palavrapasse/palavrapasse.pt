@@ -35,6 +35,7 @@ export class FetchClient implements Client {
 	}
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type QueryParameters = Record<string, any>;
 
 type Request = {

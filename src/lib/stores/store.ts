@@ -1,7 +1,7 @@
 import { writable, type Writable } from 'svelte/store';
 import { from, State, type TypedState } from './state';
 
-export type Store<T> = {} & Writable<TypedState<T>>;
+export type Store<T> = Writable<TypedState<T>>;
 
 export function createStore<T>(): Store<T> {
 	return writable(<TypedState<T>>{});

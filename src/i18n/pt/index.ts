@@ -9,7 +9,8 @@ const pt: BaseTranslation = {
 		'Queres receber notificações sobre futuros leaks que afetem as tuas credenciais?',
 	leakContext: 'Contexto',
 	leakShareDate: 'Data do Leak',
-	leaksQueryNotFoundResponse: 'Não encontro registos para: {email:string}',
+	leakEmail: 'E-mail',
+	leaksQueryNotFoundResponse: 'Não encontro registos!',
 	yes: 'Sim',
 	no: 'Não'
 };

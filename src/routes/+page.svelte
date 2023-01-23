@@ -6,27 +6,44 @@
 		SearchInput,
 		QueryLeaksTable,
 		HelloIllustration,
-		ThumbsUpIllustration
+		ThumbsUpIllustration,
+		Badge
 	} from '@components';
 	import { QueryLeaksStore, State } from '@stores';
 
-	let value: string;
-	let affected: string[];
+	let value = '';
+	let affected: string[] = [];
+	let isEditing = true;
 
 	$: {
-		if (value) {
-			affected = [];
+		const trimmed = value.replaceAll(/\\s+|,*/g, '');
+
+		if (trimmed.length > 1 && value.endsWith(',')) {
+			affected.push(trimmed);
+			value = '';
+		} else if (value.length === 0) {
+			isEditing = false;
+		} else {
+			isEditing = true;
 		}
 	}
 
 	function searchAffected(): void {
+		const affectedEmails = [...affected];
+
 		const trimValue = value.trim();
 
 		if (trimValue.length > 0) {
-			affected = [value];
-
-			QueryLeaksStore.affected(affected);
+			affectedEmails.push(trimValue);
 		}
+
+		isEditing = false;
+
+		QueryLeaksStore.affected(affectedEmails);
+	}
+
+	function removeFromAffectedQuery(email: string) {
+		affected = [...affected.filter((v) => v !== email)];
 	}
 </script>
 
@@ -35,34 +52,32 @@
 	<h2 class="text-xl h-16">{$LL.homepageDescription()}</h2>
 
 	<!-- preventDefault prevents input being included in webpage url -->
-	<form class="h-14" on:submit|preventDefault={searchAffected}>
+	<form class="h-14 w-full text-center" on:submit|preventDefault={searchAffected}>
 		<SearchInput id="affected-email" bind:value />
 	</form>
 
-	{#if $QueryLeaksStore.state == State.success}
+	<span>(utiliza a virgula se quiseres procurar por mais que um e-mail)</span>
+
+	<section class="flex-row">
+		{#if affected.length > 0}
+			{#each affected as email}
+				<Badge id={email} value={email} onRemoveCallback={() => removeFromAffectedQuery(email)} />
+			{/each}
+		{/if}
+	</section>
+
+	{#if $QueryLeaksStore.state == State.success && !isEditing}
 		{#if $QueryLeaksStore.value.length > 0}
-			<QueryLeaksTable id={value} leaks={$QueryLeaksStore.value} />
+			<QueryLeaksTable
+				id={value}
+				leaks={$QueryLeaksStore.value}
+				includeEmail={affected.length > 0 || value.trim().length > 0}
+			/>
 		{:else}
-			{$LL.leaksQueryNotFoundResponse({ email: value })}
+			{$LL.leaksQueryNotFoundResponse()}
 			<ThumbsUpIllustration />
 		{/if}
-	{:else if $QueryLeaksStore.state == State.loading}
-		<div class="text-center">
-			<svg
-				class="animate-spin text-center h-3/4"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M6 18L18 6M6 6l12 12"
-				/>
-			</svg>
-		</div>
-	{:else}
+	{:else if !isEditing && affected.length === 0}
 		<HelloIllustration />
 	{/if}
 </body>

@@ -4,7 +4,7 @@
 </script>
 
 <input
-	class="input-ghost-primary input"
+	class="input input-ghost-primary input-block"
 	type="search"
 	name="search-input"
 	id="search-input-{id}"
