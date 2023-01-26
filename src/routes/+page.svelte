@@ -7,14 +7,16 @@
 		QueryLeaksTable,
 		HelloIllustration,
 		ThumbsUpIllustration,
-		Badge
+		Badge,
+		QueryLeaksTargetDropdown
 	} from '@components';
 	import { QueryLeaksStore, State } from '@stores';
-	import Dropdown from '$lib/components/dropdown.svelte';
+	import type { Target } from '@http';
 
 	let value = '';
 	let affected: string[] = [];
 	let isEditing = true;
+	let target: Target;
 
 	$: {
 		const trimmed = value.replaceAll(/\\s+|,*/g, '');
@@ -40,10 +42,10 @@
 
 		isEditing = false;
 
-		QueryLeaksStore.affected(affectedEmails);
+		QueryLeaksStore.affected(affectedEmails, target);
 	}
 
-	function removeFromAffectedQuery(email: string) {
+	function removeFromAffectedQuery(email: string): void {
 		affected = [...affected.filter((v) => v !== email)];
 	}
 </script>
@@ -53,8 +55,12 @@
 	<h2 class="text-xl h-16">{$LL.homepageDescription()}</h2>
 
 	<!-- preventDefault prevents input being included in webpage url -->
-	<form class="h-14 w-full text-center" on:submit|preventDefault={searchAffected}>
-		<Dropdown id="abc" label="yes" onValueChange={() => ''} values={['1', '2', '3']} />
+	<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
+		<QueryLeaksTargetDropdown
+			onValueChange={(tt) => {
+				target = tt;
+			}}
+		/>
 		<SearchInput id="affected-email" bind:value />
 	</form>
 
