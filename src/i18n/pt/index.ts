@@ -15,7 +15,7 @@ const pt: BaseTranslation = {
 	no: 'Não',
 	all: 'Todos',
 	newest: 'Mais recentes',
-	oldest: 'Mais antigos',
+	oldest: 'Mais antigos'
 };
 
 export default pt;

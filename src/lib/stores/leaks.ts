@@ -13,15 +13,19 @@ function createQueryStore() {
 
 	return {
 		subscribe,
-		affected: (affected: string[], target: Target) => onAffectedEvent(store, santosQuery, affected, target),
+		affected: (affected: string[], target: Target) =>
+			onAffectedEvent(store, santosQuery, affected, target),
 		reset: () => onResetEvent(store)
 	};
 }
 
-function onAffectedEvent(store: Store<QueryLeaks>, query: Query, affected: string[], target: Target): void {
-	return onLoading(store, () =>
-		query.leaks(target, affected).then((ql) => setSuccess(store, ql))
-	);
+function onAffectedEvent(
+	store: Store<QueryLeaks>,
+	query: Query,
+	affected: string[],
+	target: Target
+): void {
+	return onLoading(store, () => query.leaks(target, affected).then((ql) => setSuccess(store, ql)));
 }
 
 function onResetEvent(store: Store<QueryLeaks>): void {
