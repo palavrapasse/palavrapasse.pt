@@ -7,13 +7,16 @@
 		QueryLeaksTable,
 		HelloIllustration,
 		ThumbsUpIllustration,
-		Badge
+		Badge,
+		QueryLeaksTargetDropdown
 	} from '@components';
 	import { QueryLeaksStore, State } from '@stores';
+	import type { Target } from '@http';
 
 	let value = '';
 	let affected: string[] = [];
 	let isEditing = true;
+	let target: Target;
 
 	$: {
 		const trimmed = value.replaceAll(/\\s+|,*/g, '');
@@ -39,11 +42,15 @@
 
 		isEditing = false;
 
-		QueryLeaksStore.affected(affectedEmails);
+		QueryLeaksStore.affected(affectedEmails, target);
 	}
 
-	function removeFromAffectedQuery(email: string) {
+	function removeFromAffectedQuery(email: string): void {
 		affected = [...affected.filter((v) => v !== email)];
+	}
+
+	function setLeaksTargetFilter(tt: Target): void {
+		target = tt;
 	}
 </script>
 
@@ -52,7 +59,8 @@
 	<h2 class="text-xl h-16">{$LL.homepageDescription()}</h2>
 
 	<!-- preventDefault prevents input being included in webpage url -->
-	<form class="h-14 w-full text-center" on:submit|preventDefault={searchAffected}>
+	<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
+		<QueryLeaksTargetDropdown onValueChange={setLeaksTargetFilter} />
 		<SearchInput id="affected-email" bind:value />
 	</form>
 

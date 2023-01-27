@@ -13,7 +13,11 @@ const en: Translation = {
 	leakEmail: 'E-mail',
 	leaksQueryNotFoundResponse: "I don't find leaked records!",
 	yes: 'Yes',
-	no: 'No'
+	no: 'No',
+	all: 'All',
+	newest: 'Newest',
+	oldest: 'Oldest',
+	filter: 'Filter'
 };
 
 export default en;

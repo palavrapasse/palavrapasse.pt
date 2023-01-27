@@ -56,6 +56,22 @@ type RootTranslation = {
 	 * N​ã​o
 	 */
 	no: string;
+	/**
+	 * T​o​d​o​s
+	 */
+	all: string;
+	/**
+	 * M​a​i​s​ ​r​e​c​e​n​t​e​s
+	 */
+	newest: string;
+	/**
+	 * M​a​i​s​ ​a​n​t​i​g​o​s
+	 */
+	oldest: string;
+	/**
+	 * F​i​l​t​r​o
+	 */
+	filter: string;
 };
 
 export type TranslationFunctions = {
@@ -103,6 +119,22 @@ export type TranslationFunctions = {
 	 * Não
 	 */
 	no: () => LocalizedString;
+	/**
+	 * Todos
+	 */
+	all: () => LocalizedString;
+	/**
+	 * Mais recentes
+	 */
+	newest: () => LocalizedString;
+	/**
+	 * Mais antigos
+	 */
+	oldest: () => LocalizedString;
+	/**
+	 * Filtro
+	 */
+	filter: () => LocalizedString;
 };
 
 export type Formatters = {};

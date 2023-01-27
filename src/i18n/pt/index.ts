@@ -12,7 +12,11 @@ const pt: BaseTranslation = {
 	leakEmail: 'E-mail',
 	leaksQueryNotFoundResponse: 'Não encontro registos!',
 	yes: 'Sim',
-	no: 'Não'
+	no: 'Não',
+	all: 'Todos',
+	newest: 'Mais recentes',
+	oldest: 'Mais antigos',
+	filter: 'Filtro'
 };
 
 export default pt;
