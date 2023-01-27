@@ -1,9 +1,11 @@
 <script lang="ts">
+	import type { DropdownValueTuple } from './dropdown';
+
 	type T = $$Generic;
 
 	export let id: string;
 	export let label: string;
-	export let values: [T, string][];
+	export let values: DropdownValueTuple<T>[];
 	export let onValueChange: (value: T) => void;
 
 	let selectedValue: T;

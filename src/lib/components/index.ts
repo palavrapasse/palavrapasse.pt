@@ -6,3 +6,4 @@ export { default as SearchInput } from './search_input.svelte';
 export { default as ThumbsUpIllustration } from './thumbs_up_illustration.svelte';
 export { default as Dropdown } from './dropdown.svelte';
 export { default as QueryLeaksTargetDropdown } from './query_leaks_target_dropdown.svelte';
+export * from './dropdown';
