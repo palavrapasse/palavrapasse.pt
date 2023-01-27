@@ -72,6 +72,14 @@ type RootTranslation = {
 	 * F​i​l​t​r​o
 	 */
 	filter: string;
+	/**
+	 * D​e​s​c​o​n​h​e​c​i​d​o
+	 */
+	unknown: string;
+	/**
+	 * *​ ​C​O​M​B​O​L​I​S​T​ ​r​e​p​r​e​s​e​n​t​a​m​ ​u​m​a​ ​f​r​a​ç​ã​o​ ​d​e​ ​c​r​e​d​e​n​c​i​a​i​s​ ​d​e​ ​u​m​ ​l​e​a​k​,​ ​s​e​n​d​o​ ​t​i​p​i​c​a​m​e​n​t​e​ ​d​a​d​a​s​ ​p​o​r​ ​a​t​a​c​a​n​t​e​s​ ​c​o​m​o​ ​f​o​r​m​a​ ​d​e​ ​v​a​l​i​d​a​ç​ã​o​ ​d​e​ ​u​m​ ​b​r​e​a​c​h​.
+	 */
+	combolistExplanation: string;
 };
 
 export type TranslationFunctions = {
@@ -135,6 +143,14 @@ export type TranslationFunctions = {
 	 * Filtro
 	 */
 	filter: () => LocalizedString;
+	/**
+	 * Desconhecido
+	 */
+	unknown: () => LocalizedString;
+	/**
+	 * * COMBOLIST representam uma fração de credenciais de um leak, sendo tipicamente dadas por atacantes como forma de validação de um breach.
+	 */
+	combolistExplanation: () => LocalizedString;
 };
 
 export type Formatters = {};
