@@ -16,6 +16,10 @@
 			onValueChange(selectedValue);
 		}
 	}
+
+	function setSelectedValue(value: T): void {
+		selectedValue = value;
+	}
 </script>
 
 <div id={dropdownId} class="dropdown">
@@ -23,8 +27,9 @@
 	<div class="dropdown-menu dropdown-menu-bottom-right gap-1">
 		{#each values as [value, valueLabel]}
 			<div
-				on:click={() => (selectedValue = value)}
-				on:keyup={() => null}
+				on:click={() => setSelectedValue(value)}
+				on:keyup={() => setSelectedValue(value)}
+				on:mousedown={() => setSelectedValue(value)}
 				class="dropdown-item text-sm {value === selectedValue ? 'dropdown-active' : ''}"
 			>
 				{valueLabel}

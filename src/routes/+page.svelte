@@ -48,6 +48,10 @@
 	function removeFromAffectedQuery(email: string): void {
 		affected = [...affected.filter((v) => v !== email)];
 	}
+
+	function setLeaksTargetFilter(tt: Target): void {
+		target = tt;
+	}
 </script>
 
 <body class="md:container md:mx-auto flex flex-col items-center">
@@ -56,11 +60,7 @@
 
 	<!-- preventDefault prevents input being included in webpage url -->
 	<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
-		<QueryLeaksTargetDropdown
-			onValueChange={(tt) => {
-				target = tt;
-			}}
-		/>
+		<QueryLeaksTargetDropdown onValueChange={setLeaksTargetFilter} />
 		<SearchInput id="affected-email" bind:value />
 	</form>
 
