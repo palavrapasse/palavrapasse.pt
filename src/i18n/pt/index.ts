@@ -16,7 +16,10 @@ const pt: BaseTranslation = {
 	all: 'Todos',
 	newest: 'Mais recentes',
 	oldest: 'Mais antigos',
-	filter: 'Filtro'
+	filter: 'Filtro',
+	unknown: 'Desconhecido',
+	combolistExplanation:
+		'* COMBOLIST representam uma fração de credenciais de um leak, sendo tipicamente dadas por atacantes como forma de validação de um breach.'
 };
 
 export default pt;

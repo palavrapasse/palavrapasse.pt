@@ -17,7 +17,10 @@ const en: Translation = {
 	all: 'All',
 	newest: 'Newest',
 	oldest: 'Oldest',
-	filter: 'Filter'
+	filter: 'Filter',
+	unknown: 'UNKNOWN',
+	combolistExplanation:
+		'* COMBOLIST represent a fraction of a credentials leak, often given by attackers to verify a breach.'
 };
 
 export default en;
