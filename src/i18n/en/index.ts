@@ -16,7 +16,8 @@ const en: Translation = {
 	no: 'No',
 	all: 'All',
 	newest: 'Newest',
-	oldest: 'Oldest'
+	oldest: 'Oldest',
+	filter: 'Filter'
 };
 
 export default en;

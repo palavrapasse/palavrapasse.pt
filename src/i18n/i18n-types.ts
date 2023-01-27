@@ -68,6 +68,10 @@ type RootTranslation = {
 	 * M​a​i​s​ ​a​n​t​i​g​o​s
 	 */
 	oldest: string;
+	/**
+	 * F​i​l​t​r​o
+	 */
+	filter: string;
 };
 
 export type TranslationFunctions = {
@@ -127,6 +131,10 @@ export type TranslationFunctions = {
 	 * Mais antigos
 	 */
 	oldest: () => LocalizedString;
+	/**
+	 * Filtro
+	 */
+	filter: () => LocalizedString;
 };
 
 export type Formatters = {};
