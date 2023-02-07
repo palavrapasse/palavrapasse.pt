@@ -1,7 +1,7 @@
 import { Target, type QueryLeaks, SantosClient, SantosQueryImpl, type Query } from '@http';
 import { writable } from 'svelte/store';
 import type { TypedState } from './state';
-import { onLoading, setInitial, setSuccess, type Store } from './store';
+import { onFailure, onLoading, onThrottled, setInitial, setSuccess, type Store } from './store';
 
 export const QueryLeaksStore = createQueryStore();
 
@@ -25,7 +25,21 @@ function onAffectedEvent(
 	affected: string[],
 	target: Target
 ): void {
-	return onLoading(store, () => query.leaks(target, affected).then((ql) => setSuccess(store, ql)));
+	return onLoading(store, () =>
+		query.leaks(target, affected).then((ql) => processClientResult(store, ql))
+	);
+}
+
+function processClientResult(store: Store<QueryLeaks>, res: QueryLeaks | number): void {
+	if (typeof res === 'number') {
+		if (res === 429) {
+			onThrottled(store);
+		} else {
+			onFailure(store);
+		}
+	} else {
+		setSuccess(store, res);
+	}
 }
 
 function onResetEvent(store: Store<QueryLeaks>): void {

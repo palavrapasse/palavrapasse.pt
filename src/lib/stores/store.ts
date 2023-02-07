@@ -11,10 +11,18 @@ export function onLoading<T>(store: Store<T>, action: () => void): void {
 	return updateState(store, State.loading, action);
 }
 
-export function updateState<T>(store: Store<T>, state: State, action: () => void): void {
+export function onFailure<T>(store: Store<T>): void {
+	return updateState(store, State.failure);
+}
+
+export function onThrottled<T>(store: Store<T>): void {
+	return updateState(store, State.throttled);
+}
+
+export function updateState<T>(store: Store<T>, state: State, action?: () => void): void {
 	store.update((s) => from(s.value, state));
 
-	return action();
+	return action?.();
 }
 
 export function setInitial<T>(store: Store<T>, value: T): void {
