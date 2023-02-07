@@ -80,6 +80,22 @@ type RootTranslation = {
 	 * *​ ​C​O​M​B​O​L​I​S​T​ ​r​e​p​r​e​s​e​n​t​a​m​ ​u​m​a​ ​f​r​a​ç​ã​o​ ​d​e​ ​c​r​e​d​e​n​c​i​a​i​s​ ​d​e​ ​u​m​ ​l​e​a​k​,​ ​s​e​n​d​o​ ​t​i​p​i​c​a​m​e​n​t​e​ ​d​a​d​a​s​ ​p​o​r​ ​a​t​a​c​a​n​t​e​s​ ​c​o​m​o​ ​f​o​r​m​a​ ​d​e​ ​v​a​l​i​d​a​ç​ã​o​ ​d​e​ ​u​m​ ​b​r​e​a​c​h​.
 	 */
 	combolistExplanation: string;
+	/**
+	 * (​u​t​i​l​i​z​a​ ​a​ ​v​i​r​g​u​l​a​ ​s​e​ ​q​u​i​s​e​r​e​s​ ​p​r​o​c​u​r​a​r​ ​p​o​r​ ​m​a​i​s​ ​q​u​e​ ​u​m​ ​e​-​m​a​i​l​)
+	 */
+	leakSearchHint: string;
+	/**
+	 * P​e​s​q​u​i​s​a​n​d​o​.​.​.
+	 */
+	loadingState: string;
+	/**
+	 * O​o​p​s​.​.​.​ ​A​l​g​o​ ​d​e​ ​e​r​r​a​d​o​ ​n​ã​o​ ​e​s​t​á​ ​c​e​r​t​o​ ​(​5​0​0​)
+	 */
+	failureState: string;
+	/**
+	 * C​a​l​m​a​,​ ​a​s​s​i​m​ ​f​i​c​o​ ​c​a​n​s​a​d​o​!​ ​(​4​2​9​)
+	 */
+	throttledState: string;
 };
 
 export type TranslationFunctions = {
@@ -151,6 +167,22 @@ export type TranslationFunctions = {
 	 * * COMBOLIST representam uma fração de credenciais de um leak, sendo tipicamente dadas por atacantes como forma de validação de um breach.
 	 */
 	combolistExplanation: () => LocalizedString;
+	/**
+	 * (utiliza a virgula se quiseres procurar por mais que um e-mail)
+	 */
+	leakSearchHint: () => LocalizedString;
+	/**
+	 * Pesquisando...
+	 */
+	loadingState: () => LocalizedString;
+	/**
+	 * Oops... Algo de errado não está certo (500)
+	 */
+	failureState: () => LocalizedString;
+	/**
+	 * Calma, assim fico cansado! (429)
+	 */
+	throttledState: () => LocalizedString;
 };
 
 export type Formatters = {};
