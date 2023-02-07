@@ -2,7 +2,6 @@
 	import '../app.css';
 	import { LL } from '@i18n';
 	import {
-		NotifyButton,
 		SearchInput,
 		QueryLeaksTable,
 		HelloIllustration,
@@ -54,42 +53,40 @@
 	}
 </script>
 
-<body class="md:container md:mx-auto flex flex-col items-center">
-	<h1 class="text-4xl h-12">{$LL.homepageTitle()}</h1>
-	<h2 class="text-xl h-16">{$LL.homepageDescription()}</h2>
+<body>
+	<div class="md:container md:mx-auto flex flex-col items-center">
+		<h1 class="text-2xl sm:text-4xl h-12 text-center">{$LL.homepageTitle()}</h1>
+		<h2 class="text-lg sm:text-xl h-16 text-center">{$LL.homepageDescription()}</h2>
 
-	<!-- preventDefault prevents input being included in webpage url -->
-	<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
-		<QueryLeaksTargetDropdown onValueChange={setLeaksTargetFilter} />
-		<SearchInput id="affected-email" bind:value />
-	</form>
+		<!-- preventDefault prevents input being included in webpage url -->
+		<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
+			<QueryLeaksTargetDropdown onValueChange={setLeaksTargetFilter} />
+			<SearchInput id="affected-email" bind:value />
+		</form>
 
-	<span>(utiliza a virgula se quiseres procurar por mais que um e-mail)</span>
+		<span class="text-center">(utiliza a virgula se quiseres procurar por mais que um e-mail)</span>
 
-	<section class="flex-row">
-		{#if affected.length > 0}
-			{#each affected as email}
-				<Badge id={email} value={email} onRemoveCallback={() => removeFromAffectedQuery(email)} />
-			{/each}
+		<section class="flex-row">
+			{#if affected.length > 0}
+				{#each affected as email}
+					<Badge id={email} value={email} onRemoveCallback={() => removeFromAffectedQuery(email)} />
+				{/each}
+			{/if}
+		</section>
+
+		{#if $QueryLeaksStore.state == State.success && !isEditing}
+			{#if $QueryLeaksStore.value.length > 0}
+				<QueryLeaksTable
+					id={value}
+					leaks={$QueryLeaksStore.value}
+					includeEmail={affected.length > 0 || value.trim().length > 0}
+				/>
+			{:else}
+				{$LL.leaksQueryNotFoundResponse()}
+				<ThumbsUpIllustration />
+			{/if}
+		{:else if !isEditing && affected.length === 0}
+			<HelloIllustration />
 		{/if}
-	</section>
-
-	{#if $QueryLeaksStore.state == State.success && !isEditing}
-		{#if $QueryLeaksStore.value.length > 0}
-			<QueryLeaksTable
-				id={value}
-				leaks={$QueryLeaksStore.value}
-				includeEmail={affected.length > 0 || value.trim().length > 0}
-			/>
-		{:else}
-			{$LL.leaksQueryNotFoundResponse()}
-			<ThumbsUpIllustration />
-		{/if}
-	{:else if !isEditing && affected.length === 0}
-		<HelloIllustration />
-	{/if}
+	</div>
 </body>
-
-<div class="fixed bottom-12 right-16">
-	<NotifyButton id="subscribe-leak-notifications" />
-</div>
