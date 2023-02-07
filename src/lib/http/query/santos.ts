@@ -5,12 +5,18 @@ import type { Query } from './interface';
 export class SantosQueryImpl implements Query {
 	constructor(private readonly client: SantosClient) {}
 
-	leaks(target: Target, affected?: string[]): Promise<QueryLeaks> {
+	leaks(target: Target, affected?: string[]): Promise<QueryLeaks | number> {
 		const query = <QueryParameters>{
 			target: target,
 			affected: affected
 		};
 
-		return this.client.get(leaksEndpoint, query).then((response) => response.json());
+		return this.client
+			.get(leaksEndpoint, query)
+			.then((response) => response.json())
+			.catch((err) => {
+				console.error(err);
+				return 500;
+			});
 	}
 }
