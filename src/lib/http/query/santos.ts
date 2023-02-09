@@ -3,7 +3,7 @@ import type { QueryLeaks, Target } from '../model';
 import type { Query } from './interface';
 
 export class SantosQueryImpl implements Query {
-	constructor(private readonly client: SantosClient) { }
+	constructor(private readonly client: SantosClient) {}
 
 	async leaks(target: Target, affected?: string[]): Promise<QueryLeaks | number> {
 		const query = <QueryParameters>{
