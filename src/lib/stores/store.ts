@@ -1,10 +1,21 @@
 import { writable, type Writable } from 'svelte/store';
 import { from, State, type TypedState } from './state';
 
-export type Store<T> = Writable<TypedState<T>>;
+export type Store<T> = Writable<TypedState<T>> & StoreExtensions;
+
+type StoreExtensions = {
+	state: State;
+}
 
 export function createStore<T>(): Store<T> {
-	return writable(<TypedState<T>>{});
+	const store = writable(<TypedState<T>>{});
+
+	return {
+		set: store.set,
+		subscribe: store.subscribe,
+		update: store.update,
+		state: State.initial,
+	}
 }
 
 export function onLoading<T>(store: Store<T>, action: () => void): void {
@@ -21,6 +32,7 @@ export function onThrottled<T>(store: Store<T>): void {
 
 export function updateState<T>(store: Store<T>, state: State, action?: () => void): void {
 	store.update((s) => from(s.value, state));
+	store.state = state;
 
 	return action?.();
 }
@@ -35,6 +47,7 @@ export function setSuccess<T>(store: Store<T>, value: T): void {
 
 export function setState<T>(store: Store<T>, value: T, state: State): void {
 	const typedState = from(value, state);
+	store.state = state;
 
 	return store.set(typedState);
 }
