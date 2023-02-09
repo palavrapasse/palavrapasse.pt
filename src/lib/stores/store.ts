@@ -5,7 +5,7 @@ export type Store<T> = Writable<TypedState<T>> & StoreExtensions;
 
 type StoreExtensions = {
 	state: State;
-}
+};
 
 export function createStore<T>(): Store<T> {
 	const store = writable(<TypedState<T>>{});
@@ -14,8 +14,8 @@ export function createStore<T>(): Store<T> {
 		set: store.set,
 		subscribe: store.subscribe,
 		update: store.update,
-		state: State.initial,
-	}
+		state: State.initial
+	};
 }
 
 export function onLoading<T>(store: Store<T>, action: () => void): void {

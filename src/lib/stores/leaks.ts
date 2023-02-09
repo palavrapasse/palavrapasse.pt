@@ -1,7 +1,14 @@
 import { Target, type QueryLeaks, SantosClient, SantosQueryImpl, type Query } from '@http';
-import { writable } from 'svelte/store';
-import { State, type TypedState } from './state';
-import { createStore, onFailure, onLoading, onThrottled, setInitial, setSuccess, type Store } from './store';
+import { State } from './state';
+import {
+	createStore,
+	onFailure,
+	onLoading,
+	onThrottled,
+	setInitial,
+	setSuccess,
+	type Store
+} from './store';
 
 export const QueryLeaksStore = createQueryStore();
 
