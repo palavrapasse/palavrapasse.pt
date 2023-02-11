@@ -10,13 +10,16 @@ type TypedStateValue<T> = {
 type StateExtensions = {
 	loading: boolean;
 	success: boolean;
+	failure: boolean;
+	throttled: boolean;
 };
 
 export enum State {
 	initial,
 	loading,
 	success,
-	failure
+	failure,
+	throttled
 }
 
 export function from<T>(value: T, state: State): TypedState<T> {
@@ -24,6 +27,8 @@ export function from<T>(value: T, state: State): TypedState<T> {
 		value: value,
 		state: state,
 		loading: state == State.loading,
-		success: state == State.success
+		success: state == State.success,
+		failure: state == State.failure,
+		throttled: state == State.throttled
 	};
 }

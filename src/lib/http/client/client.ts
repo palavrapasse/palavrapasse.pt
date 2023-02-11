@@ -11,6 +11,7 @@ export class FetchClient implements Client {
 			method: Method.get,
 			query: query
 		};
+
 		return this.request(request);
 	}
 

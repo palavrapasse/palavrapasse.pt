@@ -1,6 +1,6 @@
 import { FetchClient } from './client';
 
-const baseUrl = new URL('http://localhost:8080');
+const baseUrl = new URL('https://api.palavrapasse.pt');
 
 export const leaksEndpoint = 'leaks';
 

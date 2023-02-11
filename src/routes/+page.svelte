@@ -7,9 +7,12 @@
 		HelloIllustration,
 		ThumbsUpIllustration,
 		Badge,
-		QueryLeaksTargetDropdown
+		QueryLeaksTargetDropdown,
+		SearchingIllustration,
+		FireIllustration,
+		NopeIllustration
 	} from '@components';
-	import { QueryLeaksStore, State } from '@stores';
+	import { QueryLeaksStore } from '@stores';
 	import type { Target } from '@http';
 
 	let value = '';
@@ -64,7 +67,7 @@
 			<SearchInput id="affected-email" bind:value />
 		</form>
 
-		<span class="text-center">(utiliza a virgula se quiseres procurar por mais que um e-mail)</span>
+		<span class="text-center">{$LL.leakSearchHint()}</span>
 
 		<section class="flex-row">
 			{#if affected.length > 0}
@@ -74,7 +77,7 @@
 			{/if}
 		</section>
 
-		{#if $QueryLeaksStore.state == State.success && !isEditing}
+		{#if $QueryLeaksStore.success && !isEditing}
 			{#if $QueryLeaksStore.value.length > 0}
 				<QueryLeaksTable
 					id={value}
@@ -85,6 +88,15 @@
 				{$LL.leaksQueryNotFoundResponse()}
 				<ThumbsUpIllustration />
 			{/if}
+		{:else if $QueryLeaksStore.loading}
+			<SearchingIllustration />
+			<p>{$LL.loadingState()}</p>
+		{:else if $QueryLeaksStore.failure}
+			<FireIllustration />
+			<p>{$LL.failureState()}</p>
+		{:else if $QueryLeaksStore.throttled}
+			<NopeIllustration />
+			<p>{$LL.throttledState()}</p>
 		{:else if !isEditing && affected.length === 0}
 			<HelloIllustration />
 		{/if}

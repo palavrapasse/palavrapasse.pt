@@ -20,7 +20,11 @@ const en: Translation = {
 	filter: 'Filter',
 	unknown: 'UNKNOWN',
 	combolistExplanation:
-		'* COMBOLIST represent a fraction of a credentials leak, often given by attackers to verify a breach.'
+		'* COMBOLIST represent a fraction of a credentials leak, often given by attackers to verify a breach.',
+	leakSearchHint: '(compose emails with commas)',
+	loadingState: 'Searching...',
+	failureState: 'Oops... Something went wrong (500)',
+	throttledState: 'Hold on, my back hurts! (429)'
 };
 
 export default en;

@@ -19,7 +19,11 @@ const pt: BaseTranslation = {
 	filter: 'Filtro',
 	unknown: 'Desconhecido',
 	combolistExplanation:
-		'* COMBOLIST representam uma fração de credenciais de um leak, sendo tipicamente dadas por atacantes como forma de validação de um breach.'
+		'* COMBOLIST representam uma fração de credenciais de um leak, sendo tipicamente dadas por atacantes como forma de validação de um breach.',
+	leakSearchHint: '(utiliza a virgula se quiseres procurar por mais que um e-mail)',
+	loadingState: 'Pesquisando...',
+	failureState: 'Oops... Algo de errado não está certo (500)',
+	throttledState: 'Calma, assim fico cansado! (429)'
 };
 
 export default pt;
