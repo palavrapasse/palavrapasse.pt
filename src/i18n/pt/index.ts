@@ -23,7 +23,8 @@ const pt: BaseTranslation = {
 	leakSearchHint: '(utiliza a virgula se quiseres procurar por mais que um e-mail)',
 	loadingState: 'Pesquisando...',
 	failureState: 'Oops... Algo de errado não está certo (500)',
-	throttledState: 'Calma, assim fico cansado! (429)'
+	throttledState: 'Calma, assim fico cansado! (429)',
+	editingState: 'Força, assim que terminares a pesquisa estarei aqui para te ajudar!'
 };
 
 export default pt;
