@@ -10,7 +10,8 @@
 		QueryLeaksTargetDropdown,
 		SearchingIllustration,
 		FireIllustration,
-		NopeIllustration
+		NopeIllustration,
+		ReadingIllustration
 	} from '@components';
 	import { QueryLeaksStore } from '@stores';
 	import type { Target } from '@http';
@@ -99,6 +100,9 @@
 			<p>{$LL.throttledState()}</p>
 		{:else if !isEditing && affected.length === 0}
 			<HelloIllustration />
+		{:else}
+			<ReadingIllustration />
+			<p class="text-center">{$LL.editingState()}</p>
 		{/if}
 	</div>
 </body>
