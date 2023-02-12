@@ -24,8 +24,8 @@ const config = {
 			'@i18n': path.resolve('./src/i18n/index.ts')
 		},
 		paths: {
-			base: dev ? '' : '',
-		},
+			base: dev ? '' : ''
+		}
 	}
 };
 
