@@ -96,6 +96,10 @@ type RootTranslation = {
 	 * C​a​l​m​a​,​ ​a​s​s​i​m​ ​f​i​c​o​ ​c​a​n​s​a​d​o​!​ ​(​4​2​9​)
 	 */
 	throttledState: string;
+	/**
+	 * F​o​r​ç​a​,​ ​a​s​s​i​m​ ​q​u​e​ ​t​e​r​m​i​n​a​r​e​s​ ​a​ ​p​e​s​q​u​i​s​a​ ​e​s​t​a​r​e​i​ ​a​q​u​i​ ​p​a​r​a​ ​t​e​ ​a​j​u​d​a​r​!
+	 */
+	editingState: string;
 };
 
 export type TranslationFunctions = {
@@ -183,6 +187,10 @@ export type TranslationFunctions = {
 	 * Calma, assim fico cansado! (429)
 	 */
 	throttledState: () => LocalizedString;
+	/**
+	 * Força, assim que terminares a pesquisa estarei aqui para te ajudar!
+	 */
+	editingState: () => LocalizedString;
 };
 
 export type Formatters = {};

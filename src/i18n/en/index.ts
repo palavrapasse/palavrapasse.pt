@@ -24,7 +24,8 @@ const en: Translation = {
 	leakSearchHint: '(compose emails with commas)',
 	loadingState: 'Searching...',
 	failureState: 'Oops... Something went wrong (500)',
-	throttledState: 'Hold on, my back hurts! (429)'
+	throttledState: 'Hold on, my back hurts! (429)',
+	editingState: 'Go on, I will be here to assist you once you finish your search.'
 };
 
 export default en;
