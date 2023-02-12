@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html data-theme="dark" lang="pt">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		%sveltekit.head%
 
-		<!-- Google tag (gtag.js) (don't worry, we only use google analytics to measure website hits :)) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZW0E0SVP8V"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
+<head>
+	<title>🔑 palavrapasse.pt</title>
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="description" content="A ferramenta Portuguesa para gestão da tua palavra-passe">
+	<meta name="keywords"
+		content="palavrapasse, palavra-passe, palavra passe, password, leak, breach, portugal, ferramenta">
+	<meta name="author" content="palavrapasse.pt">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-			gtag('config', 'G-ZW0E0SVP8V', { cookie_flags: 'secure;samesite=none' });
-		</script>
-	</head>
+	%sveltekit.head%
 
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+	<!-- Google tag (gtag.js) (don't worry, we only use google analytics to measure website hits :)) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZW0E0SVP8V"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-ZW0E0SVP8V', { cookie_flags: 'secure;samesite=none' });
+	</script>
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>
