@@ -62,7 +62,7 @@
 
 <body>
 	<div class="md:container md:mx-auto flex flex-col items-center">
-		<h1 class="text-2xl sm:text-4xl h-12 text-center">{$LL.homepageTitle()}</h1>
+		<h1 class="text-2xl sm:text-4xl text-center">{$LL.homepageTitle()}</h1>
 		<h2 class="text-lg sm:text-xl h-16 text-center">{$LL.homepageDescription()}</h2>
 
 		<!-- preventDefault prevents input being included in webpage url -->
