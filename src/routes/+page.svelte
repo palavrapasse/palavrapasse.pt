@@ -66,7 +66,11 @@
 		<h2 class="text-lg sm:text-xl h-16 text-center">{$LL.homepageDescription()}</h2>
 
 		<!-- preventDefault prevents input being included in webpage url -->
-		<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
+		<form
+			class="h-14 w-full text-center flex flex-row"
+			on:submit|preventDefault={searchAffected}
+			action="."
+		>
 			<QueryLeaksTargetDropdown onValueChange={setLeaksTargetFilter} />
 			<SearchInput id="affected-email" bind:value bind:inputElement />
 		</form>
