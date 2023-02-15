@@ -9,7 +9,7 @@
 	const includesCombolistContext = leaks.find((l) => isCombolistContext(l.context)) !== undefined;
 </script>
 
-<div class="flex w-full overflow-x-auto">
+<div class="flex w-full overflow-x-auto mt-5">
 	<table id="leaks-query-table-{id}" class="table">
 		<thead>
 			<tr>
