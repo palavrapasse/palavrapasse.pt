@@ -67,7 +67,7 @@
 
 		<!-- preventDefault prevents input being included in webpage url -->
 		<form
-			class="h-14 w-full text-center flex flex-row"
+			class="w-full text-center flex flex-row"
 			on:submit|preventDefault={searchAffected}
 			action="."
 		>
