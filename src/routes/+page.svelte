@@ -20,6 +20,7 @@
 	let affected: string[] = [];
 	let isEditing = true;
 	let target: Target;
+	let inputElement: HTMLInputElement;
 
 	$: {
 		const trimmed = value.replaceAll(/\\s+|,*/g, '');
@@ -43,6 +44,8 @@
 			affectedEmails.push(trimValue);
 		}
 
+		inputElement.blur();
+
 		isEditing = false;
 
 		QueryLeaksStore.affected(affectedEmails, target);
@@ -65,7 +68,7 @@
 		<!-- preventDefault prevents input being included in webpage url -->
 		<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
 			<QueryLeaksTargetDropdown onValueChange={setLeaksTargetFilter} />
-			<SearchInput id="affected-email" bind:value />
+			<SearchInput id="affected-email" bind:value bind:inputElement />
 		</form>
 
 		<span class="text-center">{$LL.leakSearchHint()}</span>
