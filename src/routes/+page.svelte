@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.css';
 	import { LL } from '@i18n';
-	// import setFocus from "@svackages/set-focus@1.0.1";
 	import {
 		SearchInput,
 		QueryLeaksTable,
@@ -21,7 +20,7 @@
 	let affected: string[] = [];
 	let isEditing = true;
 	let target: Target;
-	let inputRef: HTMLInputElement;
+	let inputElement: HTMLInputElement;
 
 	$: {
 		const trimmed = value.replaceAll(/\\s+|,*/g, '');
@@ -45,7 +44,7 @@
 			affectedEmails.push(trimValue);
 		}
 
-		inputRef.blur(); // input will no longer have the focus and therefore the mobile keyboard will be closed
+		inputElement.blur();
 
 		isEditing = false;
 
@@ -69,7 +68,7 @@
 		<!-- preventDefault prevents input being included in webpage url -->
 		<form class="h-14 w-full text-center flex flex-row" on:submit|preventDefault={searchAffected}>
 			<QueryLeaksTargetDropdown onValueChange={setLeaksTargetFilter} />
-			<SearchInput id="affected-email" bind:value bind:inputRef />
+			<SearchInput id="affected-email" bind:value bind:inputElement />
 		</form>
 
 		<span class="text-center">{$LL.leakSearchHint()}</span>
