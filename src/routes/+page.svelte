@@ -93,8 +93,8 @@
 					includeEmail={affected.length > 0 || value.trim().length > 0}
 				/>
 			{:else}
-				{$LL.leaksQueryNotFoundResponse()}
 				<ThumbsUpIllustration />
+				<p>{$LL.leaksQueryNotFoundResponse()}</p>
 			{/if}
 		{:else if $QueryLeaksStore.loading}
 			<SearchingIllustration />
